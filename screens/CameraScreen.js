@@ -28,9 +28,6 @@ export const CameraScreen = () => {
     await ImageManipulator.manipulateAsync(pictureMetadata.uri, [
       { resize: { width: 800 } },
     ]);
-    await ImageManipulator.manipulateAsync(pictureMetadata.uri, [
-      { resize: { width: 800 } },
-    ]);
   };
 
   if (cameraPermission === null) {
@@ -46,20 +43,18 @@ export const CameraScreen = () => {
         <View style={styles.cameraView}>
           <TouchableOpacity
             onPress={toggleCameraType}
-            style={styles.toggleButton}
+            style={[styles.button, styles.toggleButton]}
           >
-            <Icon name="retweet" color="white" />
+            <Icon name="retweet" color="black" size={20} />
+          </TouchableOpacity>
+          <TouchableOpacity
+            onPress={onPress}
+            style={[styles.button, styles.cameraButton]}
+          >
+            <Icon name="camera" color="black" size={20} />
           </TouchableOpacity>
         </View>
       </Camera>
-      {/* <Icon.Button onPress={onPress} style={styles.cameraButton}>
-        <Icon name="camera" color="white" />
-      </Icon.Button> */}
-      <Button
-        onPress={onPress}
-        style={styles.cameraButton}
-        title="Take a picture"
-      />
     </>
   );
 };
@@ -75,14 +70,21 @@ const styles = StyleSheet.create({
   cameraView: {
     padding: 10,
   },
-  toggleButton: {
+  button: {
     alignItems: "center",
     padding: 10,
-    backgroundColor: "gray",
+    backgroundColor: "rgba(206, 202, 209, 0.6)",
+    width: 50,
+    height: 50,
+    borderRadius: 50,
+    justifyContent: "center",
+  },
+  toggleButton: {
+    alignSelf: "flex-end",
   },
   cameraButton: {
-    flexShrink: 0,
     alignSelf: "center",
-    backgroundColor: "purple",
+    position: "absolute",
+    top: 550,
   },
 });

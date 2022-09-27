@@ -25,9 +25,6 @@ export default function App() {
             }
             return <Ionicons name={iconName} size={size} color={color} />;
           },
-          tabBarOptions: {
-            showIcon: true,
-          },
           tabBarActiveTintColor: "purple",
           tabBarInactiveTintColor: "gray",
         })}
